@@ -55,3 +55,22 @@ $.win.addEventListener("open", function() {
        </Window>
    </Alloy>
 ```
+
+```json
+"#btn" : {
+	name:'Blah',
+	top:'20',
+	width: 100,
+	height: 100,
+	filledColor:'#31B3E7',
+	unfilledColor: 'gray',
+	btnOnColor: '#31B3E7'
+}
+
+"#btn2" : {
+	name: 'Button2',
+	top:'150',
+	width: 50,
+	height: 50
+}
+```
