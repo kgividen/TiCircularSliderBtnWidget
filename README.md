@@ -3,6 +3,8 @@ A circular slider with button for Titanium
 
 # TiCircularSliderBtnWidget [![Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://www.appcelerator.com/titanium/)
 
+<img src="sample.png" />
+
 ## About
 TiCircularSliderBtnWidget is an Alloy Widget for Titanium for iOS and (soon to be Android). It uses
 [TiCircularSlider](https://github.com/mpociot/TiCircularSlider).
