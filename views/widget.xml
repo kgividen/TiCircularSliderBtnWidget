@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="container" class="container">
+		<View id="button" zIndex="110">
+			<Label id="currentValLbl"></Label>
+			<Label id="btnName"></Label>
+		</View>
+	</View>
+</Alloy>
