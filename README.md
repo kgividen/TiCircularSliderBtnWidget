@@ -62,9 +62,14 @@ $.win.addEventListener("open", function() {
 	top:'20',
 	width: 100,
 	height: 100,
-	filledColor:'#31B3E7',
-	unfilledColor: 'gray',
-	btnOnColor: '#31B3E7'
+	filledColor:'#6CC5CF',
+	unfilledColor: '#898989',
+	btnOnColor: '#31B3E7',
+	btnOffColor: '#898989',
+	currentValueOnColor: '#6CC5CF',
+	currentValueOffColor: '#898989',
+	btnLabelOnColor: 'white',
+	btnLabelOffColor: 'white'
 }
 
 "#btn2" : {
@@ -73,4 +78,5 @@ $.win.addEventListener("open", function() {
 	width: 50,
 	height: 50
 }
+
 ```

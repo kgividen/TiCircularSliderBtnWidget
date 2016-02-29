@@ -10,11 +10,9 @@
 '#container': {
     height: Ti.UI.SIZE,
     width: Ti.UI.SIZE,
-    // borderColor: '#f10'
 }
 
 '#button': {
-    // borderColor: '#f00'
 }
 
 "#currentValLbl" : {

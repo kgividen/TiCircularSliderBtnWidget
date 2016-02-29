@@ -6,6 +6,10 @@ var TiCircularSlider = require('de.marcelpociot.circularslider');
 var lw = _.has(args, 'height') ? args.height*.08 : 5;
 
 $.container.top = args.top || 10;
+var currentValueOnColor = _.has(args, 'currentValueOnColor') ? args.currentValueOnColor : "black";
+var currentValueOffColor = _.has(args, 'currentValueOffColor') ? args.currentValueOffColor : "black";
+var btnLabelOffColor = _.has(args, 'btnLabelOffColor') ? args.btnLabelOffColor : "black";
+var btnLabelOnColor = _.has(args, 'btnLabelOnColor') ? args.btnLabelOnColor : "black";
 
 var sliderView = TiCircularSlider.createView({
     height: args.height || 100,
@@ -55,11 +59,14 @@ $.button.setBackgroundGradient({
 $.currentValLbl.setFont({
 	fontSize: _.has(args, 'fontSize') ? args.fontSize : w*.4	
 });
+
+$.currentValLbl.setColor(currentValueOffColor);
 	
 $.btnName.setText(args.name || "");
 $.btnName.setFont({
 	fontSize: _.has(args, 'fontSize') ? args.fontSize : w*.2	
 });
+$.btnName.setColor(btnLabelOffColor);
 
 //Toggle the button on/off when clicked
 $.button.addEventListener('click',function(e){
@@ -95,6 +102,8 @@ function turnBtnOn() {
             }
         ]	
 	});	
+	$.currentValLbl.setColor(currentValueOnColor);
+	$.btnName.setColor(btnLabelOnColor);
 }
 
 function turnBtnOff () {
@@ -109,6 +118,8 @@ function turnBtnOff () {
             }
         ]	
 	});	
+	$.currentValLbl.setColor(currentValueOffColor);
+	$.btnName.setColor(btnLabelOffColor);
 }
 
 	
