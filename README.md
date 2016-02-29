@@ -56,7 +56,7 @@ $.win.addEventListener("open", function() {
    </Alloy>
 ```
 
-```json
+```
 "#btn" : {
 	name:'Blah',
 	top:'20',
