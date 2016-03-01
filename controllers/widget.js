@@ -73,12 +73,16 @@ $.button.addEventListener('click',function(e){
 	var val = $.currentValLbl.text;
 	if(val > 0) {
 		$.currentValLbl.setText("0");
-		sliderView.setValue(0);
+		if(OS_IOS){
+			sliderView.setValue(0);	
+		}
 		turnBtnOff();
 		buttonClicked("off");
 	} else {
 		$.currentValLbl.setText("100");
-		sliderView.setValue(100);
+		if(OS_IOS){
+			sliderView.setValue(100);
+		}
 		turnBtnOn();
 		buttonClicked("on");
 	}
@@ -150,7 +154,9 @@ function onTouchEnd(callback) {
 }
 
 function setBtnValue(e) {
-	sliderView.setValue(e);
+	if(OS_IOS){
+		sliderView.setValue(e);
+	}
 	turnBtnOn();
 }
 // sliderView.onClick = function(callback) {
