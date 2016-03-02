@@ -1,7 +1,14 @@
 var args = arguments[0] || {};
-Ti.API.info("args: " + JSON.stringify(args));
 
 var TiCircularSlider = require('de.marcelpociot.circularslider');
+
+//This applies a class if it's passed in so you can control styling from app.tss
+// if(args.className){
+	// var style = $.createStyle({
+		// classes : args.className
+	// });
+	// $.button.applyProperties(style);	
+// }
 
 var lw = _.has(args, 'height') ? args.height*.08 : 5;
 
@@ -36,7 +43,6 @@ sliderView.addEventListener('touchend',function(e){
 //calculate the inside of the button
 var w = _.has(args, 'width') ? args.width-(args.width * .35) : 70;
 var h = _.has(args, 'height') ? args.height-(args.height * .35) : 70;
-Ti.API.info("w: " + w + " h: " + h);
 var b = _.has(args, 'width') ? w/2: 35;
 
 //Make the button half moon shaped
@@ -63,9 +69,11 @@ $.currentValLbl.setFont({
 $.currentValLbl.setColor(currentValueOffColor);
 	
 $.btnName.setText(args.name || "");
-$.btnName.setFont({
-	fontSize: _.has(args, 'fontSize') ? args.fontSize : w*.2	
-});
+var buttonNameFont = _.has(args, 'buttonNameFont') ? args.buttonNameFont : {};
+// Ti.API.info("buttonNameFont: " + JSON.stringify(buttonNameFont));
+buttonNameFont.fontSize = (buttonNameFont.fontSize) ? buttonNameFont.fontSize : w*.2;
+
+$.btnName.setFont(buttonNameFont);
 $.btnName.setColor(btnLabelOffColor);
 
 //Toggle the button on/off when clicked
@@ -157,7 +165,11 @@ function setBtnValue(e) {
 	if(OS_IOS){
 		sliderView.setValue(e);
 	}
-	turnBtnOn();
+	if(e > 0){
+		turnBtnOn();
+	} else {
+		turnBtnOff();
+	}
 }
 // sliderView.onClick = function(callback) {
 	// onClickCallback = callback;
@@ -172,6 +184,7 @@ function setBtnValue(e) {
 	// turnBtnOn();
 // };
 
+$.container.setBtnValue = setBtnValue;
 //Exports
 exports.onClick = onClick;
 exports.onTouchEnd = onTouchEnd;

@@ -20,6 +20,8 @@
 	 top:"2%"
 }
 "#btnName" : {
+	 width:"90%",
 	 zIndex:"10", 
-	 top:'60%'
+	 top:'60%',
+	 textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER
 }
