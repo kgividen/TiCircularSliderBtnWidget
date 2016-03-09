@@ -17,13 +17,19 @@ var currentValueOnColor = _.has(args, 'currentValueOnColor') ? args.currentValue
 var currentValueOffColor = _.has(args, 'currentValueOffColor') ? args.currentValueOffColor : "black";
 var btnLabelOffColor = _.has(args, 'btnLabelOffColor') ? args.btnLabelOffColor : "black";
 var btnLabelOnColor = _.has(args, 'btnLabelOnColor') ? args.btnLabelOnColor : "black";
+var minimumValue = _.has(args, 'minimumValue') ? args.minimumValue : 0;
+var maximumValue = _.has(args, 'maximumValue') ? args.maximumValue : 100;
+var handleColor = _.has(args, 'handleColor') ? args.handleColor : "blue";
 
 var sliderView = TiCircularSlider.createView({
     height: args.height || 100,
     width: args.width || 100,
     lineWidth: lw,
     filledColor: args.filledColor || "blue",
-    unfilledColor: args.unfilledColor || "gray"
+    unfilledColor: args.unfilledColor || "gray",
+    maximumValue: maximumValue,
+    minimumValue: minimumValue,
+    handleColor: handleColor
 });
 
 
@@ -32,7 +38,7 @@ sliderView.addEventListener('change',function(e){
 });
 
 sliderView.addEventListener('touchend',function(e){
-	var val = Math.round(e.value);
+	var val = (OS_IOS) ? Math.round(e.value) : Math.round(e.source.value);
 	if(val == undefined || isNaN(val)) {
 		return;
 	}
@@ -81,16 +87,12 @@ $.button.addEventListener('click',function(e){
 	var val = $.currentValLbl.text;
 	if(val > 0) {
 		$.currentValLbl.setText("0");
-		if(OS_IOS){
-			sliderView.setValue(0);	
-		}
+		sliderView.setValue(0);	
 		turnBtnOff();
 		buttonClicked("off");
 	} else {
 		$.currentValLbl.setText("100");
-		if(OS_IOS){
-			sliderView.setValue(100);
-		}
+		sliderView.setValue(100);
 		turnBtnOn();
 		buttonClicked("on");
 	}
@@ -162,9 +164,7 @@ function onTouchEnd(callback) {
 }
 
 function setBtnValue(e) {
-	if(OS_IOS){
-		sliderView.setValue(e);
-	}
+	sliderView.setValue(e);
 	if(e > 0){
 		turnBtnOn();
 	} else {
