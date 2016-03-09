@@ -6,11 +6,11 @@ A circular slider with button for Titanium
 <img src="sample.png" />
 
 ## About
-TiCircularSliderBtnWidget is an Alloy Widget for Titanium for iOS and (soon to be Android). It uses
-[TiCircularSlider](https://github.com/mpociot/TiCircularSlider).
+TiCircularSliderBtnWidget is an Alloy Widget for Titanium for iOS and Android. It uses
+[kgividen fork Of TiCircularSlider](https://github.com/kgividen/TiCircularSlider) based on [TiCircularSlider](https://github.com/mpociot/TiCircularSlider).  I'll create a pull request for that soon.
 
 TiCircularSlider uses the native modules
-[EFCircularSlider](https://github.com/eliotfowler/EFCircularSlider) on iOS and [CircularSeekBar](https://github.com/RaghavSood/AndroidCircularSeekBar) on Android. 
+[EFCircularSlider](https://github.com/eliotfowler/EFCircularSlider) on iOS and [HoloCircleSeekBar](https://github.com/JesusM/HoloCircleSeekBar) on Android. 
 
 ## Quick Start
 
@@ -62,14 +62,17 @@ $.win.addEventListener("open", function() {
 	top:'20',
 	width: 100,
 	height: 100,
-	filledColor:'#6CC5CF',
+	filledColor:'#31B3E7',
 	unfilledColor: '#898989',
 	btnOnColor: '#31B3E7',
 	btnOffColor: '#898989',
-	currentValueOnColor: '#6CC5CF',
+	currentValueOnColor: '#31B3E7',
 	currentValueOffColor: '#898989',
 	btnLabelOnColor: 'white',
-	btnLabelOffColor: 'white'
+	btnLabelOffColor: 'white',
+	buttonNameFont: {
+       		fontSize : "8"
+	}
 }
 
 "#btn2" : {
@@ -78,5 +81,27 @@ $.win.addEventListener("open", function() {
 	width: 50,
 	height: 50
 }
+
+```
+
+or you can do it in the controller:
+
+```
+var style = {
+	width: 100,
+	height: 100,
+	filledColor:'#31B3E7',
+	unfilledColor: '#898989',
+	btnOnColor: '#31B3E7',
+	btnOffColor: '#898989',
+	currentValueOnColor: '#31B3E7',
+	currentValueOffColor: '#898989',
+	btnLabelOnColor: 'white',
+	btnLabelOffColor: 'white',
+	buttonNameFont: {
+       	fontSize : "8"
+	}
+};
+blah.btn = Alloy.createWidget('TiCircularSliderBtnWidget',style).getView();
 
 ```
